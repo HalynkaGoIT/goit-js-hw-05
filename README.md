@@ -1,121 +1,112 @@
-# goit-js-hw-02
-
 HomeWork
 
-Задача 1. Замовлення дроїдів
+Задача 1. Імена користувачів
 
-Виконуй це завдання у файлі task-1.js
+Напиши стрілочну функцію getUserNames(users), яка прийматиме один параметр users
+— масив об’єктів користувачів. Функція має повертати масив імен усіх
+користувачів (властивість name) із масиву users.
 
-Станція з продажу ремонтних дроїдів готова до запуску, залишилося написати
-програмне забезпечення для відділу продажів. Оголоси функцію
-makeTransaction(quantity, pricePerDroid, customerCredits), яка складає та
-повертає повідомлення про купівлю ремонтних дроїдів.
+Візьми код нижче і встав після оголошення своєї функції для перевірки
+коректності її роботи. У консоль будуть виведені результати її викликів.
 
-Вона оголошує три параметри, значення яких будуть задаватися під час її виклику:
+console.log( getUserNames([ { name: "Moore Hensley", email:
+"moorehensley@indexia.com", balance: 2811 }, { name: "Sharlene Bush", email:
+"sharlenebush@tubesys.com", balance: 3821 }, { name: "Ross Vazquez", email:
+"rossvazquez@xinware.com", balance: 3793 }, { name: "Elma Head", email:
+"elmahead@omatom.com", balance: 2278 }, { name: "Carey Barr", email:
+"careybarr@nurali.com", balance: 3951 }, { name: "Blackburn Dotson", email:
+"blackburndotson@furnigeer.com", balance: 1498 }, { name: "Sheree Anthony",
+email: "shereeanthony@kog.com", balance: 2764 }, ]) ); // ["Moore Hensley",
+"Sharlene Bush", "Ross Vazquez", "Elma Head", "Carey Barr", "Blackburn Dotson",
+"Sheree Anthony"]
 
-quantity — кількість замовлених дроїдів pricePerDroid — ціна одного дроїда
-customerCredits — сума коштів на рахунку клієнта
+Задача 2. Користувачі з другом
 
-Доповни функцію таким чином:
+Напиши стрілочну функцію getUsersWithFriend(users, friendName) , яка прийматиме
+два параметра:
 
-Оголоси змінну для зберігання загальної суми замовлення (загальна вартість усіх
-замовлених дроїдів) і задай їй вираз розрахунку цієї суми. Додай перевірку, чи
-зможе клієнт оплатити замовлення: якщо сума до сплати перевищує кількість
-кредитів на рахунку клієнта, функція має повертати рядок "Insufficient funds!" в
-іншому випадку функція має повертати рядок "You ordered <quantity> droids worth
-<totalPrice> credits!", де <quantity> це кількість замовлених дроїдів, а
-<totalPrice> це їх загальна вартість.
+перший параметр users — масив об’єктів користувачів другий параметр friendName —
+ім’я друга для пошуку. Функція має повертати масив усіх користувачів із масиву
+users, у яких є друг з іменем friendName. Друзі кожного користувача зберігаються
+у властивості friends. Якщо користувачів, у яких є такий друг немає, то функція
+має повернути порожній масив.
+
+Поради:
+
+Метод filter() можна використовувати для створення нового масиву з елементами,
+які задовольняють певну умову. Використовуй метод includes() для перевірки, чи
+масив friends містить friendName. Візьми код нижче і встав після оголошення
+своєї функції для перевірки коректності її роботи. У консоль будуть виведені
+результати її роботи.
+
+const allUsers = [ { name: "Moore Hensley", friends: ["Sharron Pace"] }, { name:
+"Sharlene Bush", friends: ["Briana Decker", "Sharron Pace"] }, { name: "Ross
+Vazquez", friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"] },
+{ name: "Elma Head", friends: ["Goldie Gentry", "Aisha Tran"] }, { name: "Carey
+Barr", friends: ["Jordan Sampson", "Eddie Strong"] }, { name: "Blackburn
+Dotson", friends: ["Jacklyn Lucas", "Linda Chapman"] }, { name: "Sheree
+Anthony", friends: ["Goldie Gentry", "Briana Decker"] } ];
+
+console.log(getUsersWithFriend(allUsers, "Briana Decker")); // [ // { // name:
+"Sharlene Bush", // friends: ["Briana Decker", "Sharron Pace"] // }, // { //
+name: "Sheree Anthony", // friends: ["Goldie Gentry", "Briana Decker"] // } // ]
+
+console.log(getUsersWithFriend(allUsers, "Goldie Gentry")); // [ // { // name:
+"Elma Head", // friends: ["Goldie Gentry", "Aisha Tran"] // }, // { // name:
+"Sheree Anthony", // friends: ["Goldie Gentry", "Briana Decker"] // } // ]
+
+console.log(getUsersWithFriend(allUsers, "Adrian Cross" )); // []
+
+Задача 3. Сортування за кількістю друзів
+
+Напиши стрілочну функцію sortByDescendingFriendCount(users) , яка прийматиме
+один параметр users — масив об’єктів користувачів.
+
+Функція має повертати масив усіх користувачів, відсортованих за спаданням
+кількостій їх друзів (властивість friends).
 
 Візьми код нижче і встав після оголошення своєї функції для перевірки
 коректності її роботи. У консоль будуть виведені результати її роботи.
 
-console.log(makeTransaction(5, 3000, 23000)); // "You ordered 5 droids worth
-15000 credits!" console.log(makeTransaction(3, 1000, 15000)); // "You ordered 3
-droids worth 3000 credits!" console.log(makeTransaction(10, 5000, 8000)); //
-"Insufficient funds!" console.log(makeTransaction(8, 2000, 10000)); //
-"Insufficient funds!" console.log(makeTransaction(10, 500, 5000)); // "You
-ordered 10 droids worth 5000 credits!"
+console.log( sortByDescendingFriendCount([ { name: "Moore Hensley", friends:
+["Sharron Pace"], gender: "male" }, { name: "Sharlene Bush", friends: ["Briana
+Decker", "Sharron Pace"], gender: "female" }, { name: "Ross Vazquez", friends:
+["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"], gender: "male" }, {
+name: "Elma Head", friends: ["Goldie Gentry", "Aisha Tran"], gender: "female" },
+{ name: "Carey Barr", friends: ["Jordan Sampson", "Eddie Strong"], gender:
+"male" }, { name: "Blackburn Dotson", friends: ["Jacklyn Lucas", "Linda
+Chapman"], gender: "male" }, { name: "Sheree Anthony", friends: ["Goldie
+Gentry", "Briana Decker"], gender: "female" } ]) ); // [ // { // name: "Ross
+Vazquez", // friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+// gender: "male" // }, // { // name: "Sharlene Bush", // friends: ["Briana
+Decker", "Sharron Pace"], // gender: "female" // }, // { // name: "Elma Head",
+// friends: ["Goldie Gentry", "Aisha Tran"], // gender: "female" // }, // { //
+name: "Carey Barr", // friends: ["Jordan Sampson", "Eddie Strong"], // gender:
+"male" // }, // { // name: "Blackburn Dotson", // friends: ["Jacklyn Lucas",
+"Linda Chapman"], // gender: "male" // }, // { // name: "Sheree Anthony", //
+friends: ["Goldie Gentry", "Briana Decker"], // gender: "female" // }, // { //
+name: "Moore Hensley", // friends: ["Sharron Pace"], // gender: "male" // } // ]
 
-Задача 2. Форматування повідомлення
+Задача 4. Загальний баланс
 
-Виконуй це завдання у файлі task-2.js
+Напиши стрілочну функцію getTotalBalanceByGender(users, gender), яка прийматиме
+два параметра:
 
-Оголоси функцію formatMessage(message, maxLength), яка приймає рядок (параметр
-message) та перевіряє його довжину відповідно до заданої максимальної довжини
-(параметр maxLength).
-
-Доповни код функції таким чином, що:
-
-Якщо довжина рядка дорівнює або менша за maxLength, то функція повертає
-початковий рядок без змін. Якщо довжина перевищує maxLength, то функція обрізає
-рядок до maxLength символів, додає трикрапку "..." в кінці та повертає обрізану
-версію.
-
-Візьми код нижче і встав після оголошення своєї функції для перевірки
-коректності її роботи. У консоль будуть виведені результати її роботи.
-
-console.log(formatMessage("Curabitur ligula sapien", 16)); // "Curabitur
-ligula..." console.log(formatMessage("Curabitur ligula sapien", 23)); //
-"Curabitur ligula sapien" console.log(formatMessage("Vestibulum facilisis purus
-nec", 20)); // "Vestibulum facilisis..." console.log(formatMessage("Vestibulum
-facilisis purus nec", 30)); // "Vestibulum facilisis purus nec"
-console.log(formatMessage("Nunc sed turpis a felis in nunc fringilla", 15)); //
-"Nunc sed turpis..." console.log(formatMessage("Nunc sed turpis a felis in nunc
-fringilla", 41)); // "Nunc sed turpis a felis in nunc fringilla"
-
-Задача 3. Перевірка спаму
-
-Виконуй це завдання у файлі task-3.js
-
-Функція checkForSpam(message) приймає рядок (параметр message), перевіряє його
-на вміст заборонених слів spam і sale, і повертає результат перевірки. Слова в
-рядку параметра message можуть бути в довільному регістрі, наприклад SPAM або
-sAlE.
-
-Доповни код функції таким чином, що:
-
-Якщо знайдено заборонене слово (spam або sale), то функція повертає буль true
-Якщо в рядку відсутні заборонені слова, функція повертає буль false
+перший параметр users — масив об’єктів користувачів, другий параметр gender —
+рядок, що зберігає стать. Функція має використовувати ланцюжок виклику методів
+та повертати загальний баланс користувачів (властивість balance), стать яких
+(властивість gender) збігається зі значенням параметра gender.
 
 Візьми код нижче і встав після оголошення своєї функції для перевірки
 коректності її роботи. У консоль будуть виведені результати її роботи.
 
-console.log(checkForSpam("Latest technology news")); // false
-console.log(checkForSpam("JavaScript weekly newsletter")); // false
-console.log(checkForSpam("Get best sale offers now!")); // true
-console.log(checkForSpam("Amazing SalE, only tonight!")); // true
-console.log(checkForSpam("Trust me, this is not a spam message")); // true
-console.log(checkForSpam("Get rid of sPaM emails. Our book in on sale!")); //
-true console.log(checkForSpam("[SPAM] How to earn fast money?")); // true
+const clients = [ { name: "Moore Hensley", gender: "male", balance: 2811 }, {
+name: "Sharlene Bush", gender: "female", balance: 3821 }, { name: "Ross
+Vazquez", gender: "male", balance: 3793 }, { name: "Elma Head", gender:
+"female", balance: 2278 }, { name: "Carey Barr", gender: "male", balance: 3951
+}, { name: "Blackburn Dotson", gender: "male", balance: 1498 }, { name: "Sheree
+Anthony", gender: "female", balance: 2764 } ];
 
-Задача 4. Доставка товару
+console.log(getTotalBalanceByGender(clients, "male")); // 12053
 
-Виконуй це завдання у файлі task-4.js
-
-Оголоси функцію getShippingCost(country), яка повинна перевіряти можливість
-доставки товару в країну користувача (параметр country) і повертати повідомлення
-про результат. Обов'язково використовуй інструкцію switch.
-
-Формат рядка, що повертається "Shipping to <country> will cost <price> credits",
-де замість <country> і <price> необхідно підставити відповідні значення.
-
-Список країн і вартість доставки:
-
-China — 100 кредитів Chile — 250 кредитів Australia — 170 кредитів Jamaica — 120
-кредитів
-
-Зі списку видно, що доставка можлива не скрізь. Якщо зазначена країна відсутня у
-списку, то функція повинна повернути рядок "Sorry, there is no delivery to your
-country".
-
-Візьми код нижче і встав після оголошення своєї функції для перевірки
-коректності її роботи. У консоль будуть виведені результати її роботи.
-
-console.log(getShippingCost("Australia")); // "Shipping to Australia will cost
-170 credits" console.log(getShippingCost("Germany")); // "Sorry, there is no
-delivery to your country" console.log(getShippingCost("China")); // "Shipping to
-China will cost 100 credits" console.log(getShippingCost("Chile")); // "Shipping
-to Chile will cost 250 credits" console.log(getShippingCost("Jamaica")); //
-"Shipping to Jamaica will cost 120 credits"
-console.log(getShippingCost("Sweden")); // "Sorry, there is no delivery to your
-country"
+console.log(getTotalBalanceByGender(clients, "female")); // 8863
